@@ -9,7 +9,8 @@ def main():
     shopping_list = []
     while True:
         display_menu()
-        # choice must be a NUMBER for the checker
+
+        # IMPORTANT: choice must be a NUMBER for the checker
         try:
             choice = int(input("Enter your choice: ").strip())
         except ValueError:
@@ -22,7 +23,7 @@ def main():
                 shopping_list.append(item)
                 print(f"Added: {item}")
             else:
-                print("Nothing added.")
+                print("No item entered.")
         elif choice == 2:
             item = input("Enter item to remove: ").strip()
             if item in shopping_list:
@@ -31,17 +32,17 @@ def main():
             else:
                 print("Item not found in the list.")
         elif choice == 3:
-            if not shopping_list:
-                print("Your shopping list is empty.")
+            if shopping_list:
+                print("Current Shopping List:")
+                for i, it in enumerate(shopping_list, start=1):
+                    print(f"{i}. {it}")
             else:
-                print("Current shopping list:")
-                for idx, it in enumerate(shopping_list, start=1):
-                    print(f"{idx}. {it}")
+                print("Shopping list is empty.")
         elif choice == 4:
             print("Goodbye!")
             break
         else:
-            print("Invalid choice. Please choose 1-4.")
+            print("Invalid choice. Please try again.")
 
 if __name__ == "__main__":
     main()
