@@ -1,24 +1,18 @@
-"""
-Arithmetic operations helper for main.py.
-
-Function:
-    perform_operation(num1: float, num2: float, operation: str) -> float | str
-"""
-
-def perform_operation(num1: float, num2: float, operation: str):
-    """Return the result of add/subtract/multiply/divide on num1 and num2.
-    On divide-by-zero return the message 'Error: Division by zero'.
-    On invalid operation return 'Error: Invalid operation'.
+def perform_operation(num1, num2, operation):
     """
-    op = operation.strip().lower()
+    Perform a basic arithmetic operation.
+    operation: 'add' | 'subtract' | 'multiply' | 'divide'
+    Returns the numeric result, or an error string the caller can display.
+    """
+    operation = str(operation).strip().lower()
 
-    if op == "add":
+    if operation == "add":
         return num1 + num2
-    elif op == "subtract":
+    elif operation == "subtract":
         return num1 - num2
-    elif op == "multiply":
+    elif operation == "multiply":
         return num1 * num2
-    elif op == "divide":
+    elif operation == "divide":
         if num2 == 0:
             return "Error: Division by zero"
         return num1 / num2
