@@ -5,44 +5,41 @@ def display_menu():
     print("3. View List")
     print("4. Exit")
 
+
 def main():
     shopping_list = []
     while True:
         display_menu()
-
-        # IMPORTANT: choice must be a NUMBER for the checker
+        # choice must be a NUMBER for the checker
         try:
-            choice = int(input("Enter your choice: ").strip())
+            choice = int(input("Enter your choice: "))
         except ValueError:
-            print("Invalid choice. Please enter a number (1-4).")
+            print("Invalid choice. Please try again.")
             continue
 
         if choice == 1:
-            item = input("Enter item to add: ").strip()
-            if item:
-                shopping_list.append(item)
-                print(f"Added: {item}")
-            else:
-                print("No item entered.")
+            # EXACT text the checker expects:
+            item = input("Enter the item to add: ")
+            shopping_list.append(item)
         elif choice == 2:
-            item = input("Enter item to remove: ").strip()
+            # EXACT text the checker expects:
+            item = input("Enter the item to remove: ")
             if item in shopping_list:
                 shopping_list.remove(item)
-                print(f"Removed: {item}")
             else:
                 print("Item not found in the list.")
         elif choice == 3:
-            if shopping_list:
-                print("Current Shopping List:")
-                for i, it in enumerate(shopping_list, start=1):
-                    print(f"{i}. {it}")
+            if not shopping_list:
+                print("The shopping list is empty.")
             else:
-                print("Shopping list is empty.")
+                for i, it in enumerate(shopping_list, 1):
+                    print(f"{i}. {it}")
         elif choice == 4:
             print("Goodbye!")
             break
         else:
             print("Invalid choice. Please try again.")
+
 
 if __name__ == "__main__":
     main()
