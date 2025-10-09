@@ -13,8 +13,10 @@ class Rectangle(Shape):
         self.length = float(length)
         self.width = float(width)
 
-    def area(self) -> float:
-        return self.length * self.width
+    def area(self):
+        area = self.length * self.width
+        # If it's a whole number (e.g., 50.0), return an int so it prints as 50
+        return int(area) if float(area).is_integer() else area
 
 
 class Circle(Shape):
